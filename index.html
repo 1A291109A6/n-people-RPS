@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n人じゃんけん勝率</title>
+</head>
+<body>
+    <style>
+        #myChart {max-width:640px;max-height:480px;}
+    </style>
+    <p>n人でじゃんけんをします。1人はパーを出し続けます。その人をAとします。Aが最後の1人になるまで勝ち残る確率を以下に示します。青のグラフはA以外の人が一定の確率(1/3)で手を出したときのグラフです。赤のグラフはA以外の人が決められた確率(↓の確率)で手を出したときのグラフです。</p>
+    <p>グーの確率:<input size="10" autocomplete="off" type="text" id="g" value="0.35"></p>
+    <p>チョキの確率:<input size="10" autocomplete="off" type="text" id="t" value="0.317"></p>
+    <p>パーの確率:<input size="10" autocomplete="off" type="text" id="p" value="0.333"></p>
+    <p>じゃんけんの人数:<input type="number" id="n" min="2" step="1" value="10">人</p>
+    <button onclick="main()">グラフを描画</button>
+    <canvas id="myChart" width="600" height="400"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./script/script.js"></script>
+</body>
+</html>
