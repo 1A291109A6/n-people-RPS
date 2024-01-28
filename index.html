@@ -4,19 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>n人じゃんけん勝率</title>
+    <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" }},
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        },
+        "HTML-CSS": { matchFontHeight: false },
+        displayAlign: "left",
+        displayIndent: "2em"
+        });
+    </script>
 </head>
 <body>
     <style>
         #myChart {max-width:640px;max-height:480px;}
     </style>
-    <p>n人でじゃんけんをします。1人はパーを出し続けます。その人をAとします。じゃんけんは一回目に勝てば、勝った人同士で二回目を行い、二回目に勝てば、勝った人同士で三回目を行い、1人になるまで続けます。その1人がAである確率を以下に示します。青のグラフはA以外の人が出す手(グー、チョキ、パー)の確率をそれぞれ1/3としたときのグラフです。赤のグラフはA以外の人が決められた確率(↓の確率)で手を出したときのグラフです。(確率を入力して、下のボタンを押すと確率が自動で計算されてグラフが描画されます)</p>
-    <p>グーの確率:<input size="10" autocomplete="off" type="text" id="g" value="0.35"></p>
-    <p>チョキの確率:<input size="10" autocomplete="off" type="text" id="t" value="0.317"></p>
-    <p>パーの確率:<input size="10" autocomplete="off" type="text" id="p" value="0.333"></p>
-    <p>計算するじゃんけんの人数:<input type="number" id="n" min="2" max="2000" step="1" value="10">人まで</p>
-    <button onclick="main()">確率を計算してグラフを描画</button>
-    <canvas id="myChart" width="600" height="400"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./script/script.js"></script>
+    <h1>$n$人でじゃんけんしてパーを出し続けたとき、勝率はどうなるのか?</h1> 
+    <br/>
+    <div>
+        <h2>じゃんけんの条件</h2>
+        <hr>
+        <p>・$n$人でじゃんけんをする<br/>・$A$はパーを出し続ける<br/>・$A$以外の人はグーを$P_{rock}$、チョキを$P_{scissors}$、パーを$P_{paper}$の確率で出す<br/>・勝った人同士で再度じゃんけんを行い、1人になるまで繰り返す</p>
+        <p>求める確率は<b>上記の条件下で最後まで残った1人が$A$である確率</b>です。<br/>これを$P(A wins|n)$とします。</p>
+        <br/>
+    </div>
+    <div>
+        <h2>$n$人で一回じゃんけんしてあいこになる確率$P(draw|n)$</h2>
+        <hr>
+        <p>$P(Awins|n)$を求めるにはあいこになる確率を求める必要があります。<br/>あいこになる確率は、あいこになる余事象、すなわち<b>あいこにならない確率</b>から求めます。</p>
+        <p>あいこにならないのは、<b>$A$以外の人が①「グーやパーを出すパターン(全員パーは含まない)」、②「チョキやパーを出すパターン(全員パーは含まない)」</b>があります。</p>
+        <img src="img/1.png" width="400" height="150"/>
+        <p>①は図より$(P_{rock}+P_{paper})^{n-1}-P_{paper}^{n-1}$<br/>②は①と同様に$(P_{scissors}+P_{paper})^{n-1}-P_{paper}^{n-1}$</p>
+        <p>よって、あいこにならない確率は</p>
+        <p>①+②=$(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1}$</p>
+        <p>あいこになる確率は</p>
+        <p>1-(①+②)=$1-\{(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1})\}$</p>
+        <p>これを$P(draw|n)$とします。<br/>すなわち、</p>
+        <h3>$P(draw|n)=1-\{(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1})\}$</h3>
+        <br/>
+    </div>
+    <div>
+        <h2>$n$人で一回じゃんけんして$A$を含む$m$人が勝つ確率$P(win|n,m)$</h2>
+        <hr>
+        <p>$P(Awins|n)$を求めるにはこの確率も求める必要があります。<br/>この確率は図より</p>
+        <img src="img/2.png" width="200" height="50"/>
+        <p>$_{n-1}C_{m-1}P_{rock}^{n-m}P_{paper}^{m-1}$</p>
+        <p>これを$P(win|n,m)$とします。<br/>すなわち、</p>
+        <h3>$P(win|n,m)=_{n-1}C_{m-1}P_{rock}^{n-m}P_{paper}^{m-1}$</h3>
+        <br/>
+    </div>
+    <div>
+        <h2>$P(Awins|n)$を求める</h2>
+        <hr>
+        <p>$P(Awins|n)$を求めるために$P(Awins|2)$を求めます。</p>
+        <p>$P(Awins|2)$は</p>
+        <p>(1回目に$A$が勝つ)または(2回目に$A$が勝つ)または(3回目に$A$が勝つ)または$\dots$<br/>すなわち、<br/>(あいこにならずに$A$が勝つ)または(1回あいこになり、$A$が勝つ)または(2回あいこになり、$A$が勝つ)または$\dots$</p>
+        <p>と考えることができるので、式にすると</p>
+        <p>$P(Awins|2)=P(win|2,1)\{P(draw|2)\}^0+P(win|2,1)\{P(draw|2)\}^1+P(win|2,1)\{P(draw|2)\}^2+\dots$</p>
+        <p>これは<b>初項$P(win|2,1)$、公比$P(draw|2)$の無限等比級数の和</b>と考えることができるので、公比$P(draw|2)$が$P_{paper}\neq1$のとき、$0\leqq{P(draw|2)}<1$で、無限等比級数の和の公式から</p>
+        <p>$P(Awins|2)=\frac{P(win|2,1)}{1-P(draw|2)}$</p>
+        <p>$P(Awins|3)$も求めます。</p>
+        <p>$P(Awins|3)$は</p>
+        <p>($A$が一人勝ちする)または($A$が二人で勝ち、その後に$A$が勝つ)</p>
+        <p>と考えることができるので、$P(Awins|2)$を求めたときの考え方を使って、式にすると</p>
+        <p>$P(Awins|3)=\frac{P(win|3,1)}{1-P(draw|3)}+\frac{P(win|3,2)}{1-P(draw|3)}\cdot{\frac{P(win|2,1)}{1-P(draw|2)}}$</p>
+        <p>式をよく見ると、$P(Awins|2)$を求めたときの形があり、</p>
+        <p>$\frac{P(win|2,1)}{1-P(draw|2)}=P(Awins|2)$と書き換えられるので、</p>
+        <p>$P(Awins|3)=\frac{P(win|3,1)}{1-P(draw|3)}+\frac{P(win|3,2)}{1-P(draw|3)}P(Awins|2)$</p>
+        <p>$P(Awins|n)$を求めます。</p>
+        <p>$P(Awins|3)$を求めたときと同様に考えて、$P(Awins|n)$は</p>
+        <p>($A$が一人勝ちする)または($A$が二人で勝ち、その後に$A$が勝つ)または$\dots$または($A$が$n-1$人で勝ち、その後に$A$が勝つ)</p>
+        <p>と考えることができ、式にすると</p>
+        <p>$P(Awins|n)=\frac{P(win|n,1)}{1-P(draw|n)}+\frac{P(win|n,2)}{1-P(draw|n)}P(Awins|2)+\frac{P(win|n,3)}{1-P(draw|n)}P(Awins|3)+\dots+\frac{P(win|n,n-1)}{1-P(draw|n)}P(Awins|n-1)$</p>
+        <p>となり、$P(Awins|1)=1$とすると$\sum$を使ってまとめることができ、</p>
+        <p>$P(Awins|n)=\frac{1}{1-P(draw|n)}\sum_{m=1}^{n-1}{P(win|n,m)P(Awins|m)}$</p>
+        <p>$=\frac{1}{(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1}}\sum_{m=1}^{n-1}{_{n-1}C_{m-1}P_{rock}^{n-m}P_{paper}^{m-1}P(Awins|m)}$</p>
+        <p>求めたい確率の計算式を得ることができました。</p>
+        <br/>
+    </div>
+    <div>
+        <h2>求めた確率のグラフ</h2>
+        <hr>
+        <p>青のグラフは$A$以外の人が出す手(グー、チョキ、パー)の確率をそれぞれ$\frac{1}{3}$としたときのグラフです。赤のグラフはA以外の人が決められた確率(↓の確率)で手を出したときのグラフです。(確率を入力して、下のボタンを押すと確率が自動で計算されてグラフが描画されます)</p>
+        <h2>$P(Awins|n)=\frac{1}{(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1}}\sum_{m=1}^{n-1}{_{n-1}C_{m-1}P_{rock}^{n-m}P_{paper}^{m-1}P(Awins|m)}$</h2>
+        <p>桜美林大学の芳沢光雄教授によると、統計的に人間が出す手の確率を調べた結果、グーは35.0%、 チョキは31.7%、 パーは33.3%でした。<br/>$A$以外がその確率に従うとき、横軸を人数、縦軸を$P(Awins|n)$とすると、グラフは以下のようになります。</p>
+        <p>グーの確率:$P_{rock}=$<input size="10" autocomplete="off" type="text" id="g" value="0.35"></p>
+        <p>チョキの確率:$P_{scissors}=$<input size="10" autocomplete="off" type="text" id="t" value="0.317"></p>
+        <p>パーの確率:$P_{paper}=$<input size="10" autocomplete="off" type="text" id="p" value="0.333"></p>
+        <p>計算するじゃんけんの人数:$n=$<input type="number" id="n" min="2" max="2000" step="1" value="10">人まで</p>
+        <button onclick="main()">確率を計算してグラフを再描画</button>
+        <canvas id="myChart" width="600" height="400"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="./script/script.js"></script>
+        <br/>
+    </div>
+    <p>出す手の確率の引用:日本じゃんけん協会<br/><a href="https://japan-rps.jimdofree.com">https://japan-rps.jimdofree.com</a></p>
 </body>
 </html>
