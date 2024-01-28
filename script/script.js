@@ -1,4 +1,4 @@
-function conbin(n, r) {
+function combin(n, r) {
     if (n / 2 >= r) {
         let num = 1;
         for (let i = 0; i < r; i++) {
@@ -31,7 +31,7 @@ function main() {
     for (let i = 2; i <= n; i++) {
         let h = 0;
         for (let j = 1; j < i; j++) {
-            h += conbin(i - 1, j - 1) * a ** (i - j) * c ** (j - 1) * h_list[j - 1];
+            h += combin(i - 1, j - 1) * a ** (i - j) * c ** (j - 1) * h_list[j - 1];
         }
         h /= (a + c) ** (i - 1) + (b + c) ** (i - 1) - 2 * c **(i - 1);
         h_list.push(h);
