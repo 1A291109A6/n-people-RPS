@@ -9,12 +9,12 @@
     <style>
         #myChart {max-width:640px;max-height:480px;}
     </style>
-    <p>n人でじゃんけんをします。1人はパーを出し続けます。その人をAとします。Aが最後の1人になるまで勝ち残る確率を以下に示します。青のグラフはA以外の人が一定の確率(1/3)で手を出したときのグラフです。赤のグラフはA以外の人が決められた確率(↓の確率)で手を出したときのグラフです。</p>
+    <p>n人でじゃんけんをします。1人はパーを出し続けます。その人をAとします。じゃんけんは一回目に勝てば、勝った人同士で二回目を行い、二回目に勝てば、勝った人同士で三回目を行い、1人になるまで続けます。その1人がAである確率を以下に示します。青のグラフはA以外の人が出す手(グー、チョキ、パー)の確率をそれぞれ1/3としたときのグラフです。赤のグラフはA以外の人が決められた確率(↓の確率)で手を出したときのグラフです。(確率を入力して、下のボタンを押すと確率が自動で計算されてグラフが描画されます)</p>
     <p>グーの確率:<input size="10" autocomplete="off" type="text" id="g" value="0.35"></p>
     <p>チョキの確率:<input size="10" autocomplete="off" type="text" id="t" value="0.317"></p>
     <p>パーの確率:<input size="10" autocomplete="off" type="text" id="p" value="0.333"></p>
-    <p>じゃんけんの人数:<input type="number" id="n" min="2" step="1" value="10">人</p>
-    <button onclick="main()">グラフを描画</button>
+    <p>計算するじゃんけんの人数:<input type="number" id="n" min="2" max="2000" step="1" value="10">人まで</p>
+    <button onclick="main()">確率を計算してグラフを描画</button>
     <canvas id="myChart" width="600" height="400"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./script/script.js"></script>
