@@ -46,9 +46,17 @@
         <img src="img/1.png" width="400" height="150"/>
         <p>①は図より$(P_{rock}+P_{paper})^{n-1}-P_{paper}^{n-1}$<br/>②は①と同様に$(P_{scissors}+P_{paper})^{n-1}-P_{paper}^{n-1}$</p>
         <p>よって、あいこにならない確率は</p>
-        <p>①+②=<div class="scrollable-mathjax">$(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1}$</div></p>
+        <p>①+②=
+            <div class="scrollable-mathjax">
+                <P>$(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1}$</P>
+            </div>
+        </p>
         <p>あいこになる確率は</p>
-        <p>1-(①+②)=<div class="scrollable-mathjax">$1-\{(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1}\}$</div></p>
+        <p>1-(①+②)=
+            <div class="scrollable-mathjax">
+                <p>$1-\{(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1}\}$</p>
+            </div>
+        </p>
         <p>これを$P(draw|n)$とします。<br/>すなわち、</p>
         <div class="scrollable-mathjax">
             <h3>$P(draw|n)=1-\{(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1}\}$</h3>
@@ -62,7 +70,7 @@
         <img src="img/2.png" width="200" height="50"/>
         <p>$_{n-1}C_{m-1}・P_{rock}^{n-m}・P_{paper}^{m-1}$</p>
         <p>これを$P(win|n,m)$とします。<br/>すなわち、</p>
-        <h3><div class="scrollable-mathjax">$P(win|n,m)=_{n-1}C_{m-1}・P_{rock}^{n-m}・P_{paper}^{m-1}$</div></h3>
+        <div class="scrollable-mathjax"><h3>$P(win|n,m)=_{n-1}C_{m-1}・P_{rock}^{n-m}・P_{paper}^{m-1}$</h3></div>
         <br/>
     </div>
     <div>
@@ -72,25 +80,25 @@
         <p>$P(Awins|2)$は</p>
         <p>(1回目に$A$が勝つ)または(2回目に$A$が勝つ)または(3回目に$A$が勝つ)または$\dots$<br/>すなわち、<br/>(あいこにならずに$A$が勝つ)または(1回あいこになり、$A$が勝つ)または(2回あいこになり、$A$が勝つ)または$\dots$</p>
         <p>と考えることができるので、式にすると</p>
-        <p><div class="scrollable-mathjax">$P(Awins|2)=P(win|2,1)\{P(draw|2)\}^0+P(win|2,1)\{P(draw|2)\}^1+P(win|2,1)\{P(draw|2)\}^2+\dots$</div></p>
+        <p><div class="scrollable-mathjax"><P>$P(Awins|2)=P(win|2,1)\{P(draw|2)\}^0+P(win|2,1)\{P(draw|2)\}^1+P(win|2,1)\{P(draw|2)\}^2+\dots$</P></div></p>
         <p>これは<b>初項$P(win|2,1)$、公比$P(draw|2)$の無限等比級数の和</b>と考えることができるので、公比$P(draw|2)$が$P_{paper}\neq1$のとき、$0\leqq{P(draw|2)}<1$で、無限等比級数の和の公式から</p>
         <p>$P(Awins|2)=\frac{P(win|2,1)}{1-P(draw|2)}$</p>
         <p>$P(Awins|3)$も求めます。</p>
         <p>$P(Awins|3)$は</p>
         <p>($A$が一人勝ちする)または($A$が二人で勝ち、その後に$A$が勝つ)</p>
         <p>と考えることができるので、$P(Awins|2)$を求めたときの考え方を使って、式にすると</p>
-        <p><div class="scrollable-mathjax">$P(Awins|3)=\frac{P(win|3,1)}{1-P(draw|3)}+\frac{P(win|3,2)}{1-P(draw|3)}\cdot{\frac{P(win|2,1)}{1-P(draw|2)}}$</div></p>
+        <p><div class="scrollable-mathjax"><p>$P(Awins|3)=\frac{P(win|3,1)}{1-P(draw|3)}+\frac{P(win|3,2)}{1-P(draw|3)}\cdot{\frac{P(win|2,1)}{1-P(draw|2)}}$</p></div></p>
         <p>式をよく見ると、$P(Awins|2)$を求めたときの形があり、</p>
         <p>$\frac{P(win|2,1)}{1-P(draw|2)}=P(Awins|2)$と書き換えられるので、</p>
-        <p><div class="scrollable-mathjax">$P(Awins|3)=\frac{P(win|3,1)}{1-P(draw|3)}+\frac{P(win|3,2)}{1-P(draw|3)}P(Awins|2)$</div></p>
+        <p><div class="scrollable-mathjax"><p>$P(Awins|3)=\frac{P(win|3,1)}{1-P(draw|3)}+\frac{P(win|3,2)}{1-P(draw|3)}P(Awins|2)$</div></p></p>
         <p>$P(Awins|n)$を求めます。</p>
         <p>$P(Awins|3)$を求めたときと同様に考えて、$P(Awins|n)$は</p>
         <p>($A$が一人勝ちする)または($A$が二人で勝ち、その後に$A$が勝つ)または$\dots$または($A$が$n-1$人で勝ち、その後に$A$が勝つ)</p>
         <p>と考えることができ、式にすると</p>
-        <p><div class="scrollable-mathjax">$P(Awins|n)=\frac{P(win|n,1)}{1-P(draw|n)}+\frac{P(win|n,2)}{1-P(draw|n)}P(Awins|2)+\frac{P(win|n,3)}{1-P(draw|n)}P(Awins|3)+\dots+\frac{P(win|n,n-1)}{1-P(draw|n)}P(Awins|n-1)$</div></p>
+        <p><div class="scrollable-mathjax"><P>$P(Awins|n)=\frac{P(win|n,1)}{1-P(draw|n)}+\frac{P(win|n,2)}{1-P(draw|n)}P(Awins|2)+\frac{P(win|n,3)}{1-P(draw|n)}P(Awins|3)+\dots+\frac{P(win|n,n-1)}{1-P(draw|n)}P(Awins|n-1)$</P></div></p>
         <p>となり、$P(Awins|1)=1$とすると$\sum$を使ってまとめることができ、</p>
-        <p><div class="scrollable-mathjax">$$P(Awins|n)=\frac{1}{1-P(draw|n)}\sum_{m=1}^{n-1}{P(win|n,m)P(Awins|m)}$$</div></p>
-        <p><div class="scrollable-mathjax">$$=\frac{1}{(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1}}\sum_{m=1}^{n-1}{_{n-1}C_{m-1}・P_{rock}^{n-m}・P_{paper}^{m-1}・P(Awins|m)}$$</div></p>
+        <p><div class="scrollable-mathjax"><p>$$P(Awins|n)=\frac{1}{1-P(draw|n)}\sum_{m=1}^{n-1}{P(win|n,m)P(Awins|m)}$$</p></div></p>
+        <p><div class="scrollable-mathjax"><p>$$=\frac{1}{(P_{rock}+P_{paper})^{n-1}+(P_{scissors}+P_{paper})^{n-1}-2P_{paper}^{n-1}}\sum_{m=1}^{n-1}{_{n-1}C_{m-1}・P_{rock}^{n-m}・P_{paper}^{m-1}・P(Awins|m)}$$</p></div></p>
         <p>求めたい確率の計算式を得ることができました。</p>
         <br/>
     </div>
