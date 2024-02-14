@@ -176,12 +176,39 @@
         <h2>$P(Awins|n)$のわかっていること、わかっていないこと</h2>
         <hr>
         <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px; background-color: #ffffbb;">
-            <p><h3>わかっていること</h3>・$P(Awins|2),P(Awins|3),P(Awins|4)$の一般解<a href="https://1a291109a6.github.io/n-people-RPS/img/3.jpg" target="_blank" rel="noopener noreferrer">→写真</a><br/>・全ての自然数$n$において、$P(Awins|n)=\frac{1}{n}$が成り立つ<a href="https://1a291109a6.github.io/n-people-RPS/img/4.jpg" target="_blank" rel="noopener noreferrer">→写真</a><br/>・特殊な場合($P_{paper}=0$など)の一般解<a href="https://1a291109a6.github.io/n-people-RPS/img/5.jpg" target="_blank" rel="noopener noreferrer">→写真</a></p>
+            <p><h3>わかっていること</h3>・$P(Awins|2),P(Awins|3),P(Awins|4)$の一般解<a href="https://1a291109a6.github.io/n-people-RPS/img/3.jpg" target="_blank" rel="noopener noreferrer">→写真</a><br/>・全ての自然数$n$において、$P(Awins|n)=\frac{1}{n}$が成り立つ<a href="https://1a291109a6.github.io/n-people-RPS/img/4.jpg" target="_blank" rel="noopener noreferrer">→写真</a><br/>・特殊な場合($P_{paper}=0$など)の一般解<a href="https://1a291109a6.github.io/n-people-RPS/img/5.jpg" target="_blank" rel="noopener noreferrer">→写真</a><br/>・乱数を用いてじゃんけんのシミュレーションを行い、$P(Awins|n)$を求めたところ、数式で求めた確率と近しい値になった</p>
             <p>都合上、写真では$P(Awins|n)$を$h(n)$、$P_{rock}$を$a$、$P_{scissors}$を$b$、$P_{paper}$を$c$と書いています。</p>
         </div>
         <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px; background-color: #ffffbb;">
-            <p><h3>わかっていないこと</h3>・計算式は収束するか？また、収束するとき極限はどうなるか？<br/>・計算式は閉じた形の式であらわせないか？<br/>・求めた値は正確なのか？<br/>・2000人以上の値はどうなるのか?($n$が増加すると計算量が指数関数的に増加するため、計算できていない)</p>
+            <p><h3>わかっていないこと</h3>・計算式は収束するか？また、収束するとき極限はどうなるか？<br/>・計算式は閉じた形の式であらわせないか？<br/>・求めた値は正確なのか？(分数で計算して、大きなずれは確認できなかったので、正確だと思われる)<br/>・2000人以上の値はどうなるのか?($n$が増加すると計算量が指数関数的に増加するため、計算できていない)</p>
         </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+    <div>
+        <h2>$P(Awins|n)$のビジュアル</h2>
+        <hr>
+        <p>出す手の確率がそれぞれ$P_{rock},P_{scissors},P_{paper}$だから、その和は$P_{rock}+P_{scissors}+P_{paper}=1$となります。そのため、$P_{rock}$を$x$座標、$P_{scissors}$を$y$座標、$P_{paper}$を$z$座標とする点は、$x+y+z=1$という平面の方程式を満たします。また、$0\leqq{P_{rock}}\leqq{1},0\leqq{P_{scissors}}\leqq{1},0\leqq{P_{paper}}<1$であるので、点の集合は$(1,0,0),(0,1,0),(0,0,1)$を頂点とする三角形で表すことができます。$n$の値を定めて、三角形上の点の$P(Awins|n)$を求め、0に近ければ青、1に近ければ赤で描き、図にすると以下のようになります。</p>
+        <br/>
+        <small>↑$n=1$のときの図<img src="img/6.png" width="460" height="345"/></small>
+        <br/>
+        <small>↑$n=2$のときの図<img src="img/7.png" width="460" height="345"/></small>
+        <br/>
+        <small>↑$n=3$のときの図<img src="img/8.png" width="460" height="345"/></small>
+        <br/>
+        <small>↑$n=4$のときの図<img src="img/9.png" width="460" height="345"/></small>
+        <br/>
+        <small>↑$n=5$のときの図<img src="img/10.png" width="460" height="345"/></small>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <small>↑$n$を1~15に増やしていったのときのアニメーション<img src="img/11.gif" width="460" height="345"/></small>
+        <br/>
+        <br/>
+        <br/>
         <br/>
         <br/>
         <br/>
