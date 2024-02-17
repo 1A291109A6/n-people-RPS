@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="n人でじゃんけんして出す手に偏りがあるとき、パーを出し続けると勝つ確率はどうなるのかを求めました。その際、どのように数式を組み立てていったのか、何が分かったのかを説明していきます。">
     <title>n人じゃんけん勝率</title>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -53,7 +54,7 @@
         <p>$P(Awins|n)$を求めるにはあいこになる確率を求める必要があります。<br/>あいこになる確率は、あいこになる余事象、すなわち<b>あいこにならない確率</b>から求めます。</p>
         <p>$A$はパーを出し続けるので、あいこにならないのは<b>$A$以外の人が①「グーやパーを出すパターン(全員パーは含まない)」、②「チョキやパーを出すパターン(全員パーは含まない)」</b>があります。</p>
         <br/>
-        <img src="img/1.png" width="400" height="150"/>
+        <img src="img/1.png" width="400" height="150" alt="考えられるパターンの図"/>
         <p>①は上の図のようなパターンが考えられます。よって、①になる確率は①のそれぞれのパターンの和を求めればいいので、</p>
         <div class="scrollable-mathjax">
             <p>${}_{n-1}C_{0}・P_{rock}^{n-1}・P_{paper}^{0}+{}_{n-1}C_{1}・P_{rock}^{n-2}・P_{paper}^{1}+{}_{n-1}C_{2}・P_{rock}^{n-3}・P_{paper}^{2}+\dots+{}_{n-1}C_{n-2}・P_{rock}^{1}・P_{paper}^{n-2}$</p>
@@ -89,7 +90,7 @@
         <hr>
         <p>$P(Awins|n)$を求めるにはこの確率も求める必要があります。この確率は<b>一回のじゃんけんで勝敗が決まったときの確率</b>です。</p>
         <br/>
-        <img src="img/2.png" width="200" height="50"/>
+        <img src="img/2.png" width="200" height="50" alt="n人中m人が勝つパターンの図"/>
         <p>この確率は上の図のように、「$A$はパーを出し続けるので、勝つ$m$人($A$を除いた$m-1$人)はパーを出し、負ける$n-m$人はグーを出す」と考えることができ、<div class="scrollable-mathjax"><p>${}_{n-1}C_{m-1}・P_{rock}^{n-m}・P_{paper}^{m-1}$</p></div></p>
         <p>となります。これを$P(win|n,m)$とします。<br/>すなわち、</p>
         <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
@@ -192,20 +193,20 @@
         <hr>
         <p>出す手の確率がそれぞれ$P_{rock},P_{scissors},P_{paper}$だから、その和は$P_{rock}+P_{scissors}+P_{paper}=1$となります。そのため、$P_{rock}$を$x$座標、$P_{scissors}$を$y$座標、$P_{paper}$を$z$座標とする点は、$x+y+z=1$という平面の方程式を満たします。また、$0\leqq{P_{rock}}\leqq{1},0\leqq{P_{scissors}}\leqq{1},0\leqq{P_{paper}}<1$であるので、点の集合は$(1,0,0),(0,1,0),(0,0,1)$を頂点とする三角形で表すことができます。$n$の値を定めて、三角形上の点の$P(Awins|n)$を求め、0に近ければ青、1に近ければ赤で描き、図にすると以下のようになります。</p>
         <br/>
-        <small><img src="img/6.png" width="460" height="345"/>↑$n=1$のときの図</small>
+        <small><img src="img/6.png" width="460" height="345" alt="n=1のときの図"/>↑$n=1$のときの図</small>
         <br/>
-        <small><img src="img/7.png" width="460" height="345"/>↑$n=2$のときの図</small>
+        <small><img src="img/7.png" width="460" height="345" alt="n=2のときの図"/>↑$n=2$のときの図</small>
         <br/>
-        <small><img src="img/8.png" width="460" height="345"/>↑$n=3$のときの図</small>
+        <small><img src="img/8.png" width="460" height="345" alt="n=3のときの図"/>↑$n=3$のときの図</small>
         <br/>
-        <small><img src="img/9.png" width="460" height="345"/>↑$n=4$のときの図</small>
+        <small><img src="img/9.png" width="460" height="345" alt="n=4のときの図"/>↑$n=4$のときの図</small>
         <br/>
-        <small><img src="img/10.png" width="460" height="345"/>↑$n=5$のときの図</small>
-        <br/>
-        <br/>
+        <small><img src="img/10.png" width="460" height="345" alt="n=5のときの図"/>↑$n=5$のときの図</small>
         <br/>
         <br/>
-        <small><img src="img/11.gif" width="460" height="345"/>↑$n$を1~15に増やしていったのときのアニメーション</small>
+        <br/>
+        <br/>
+        <small><img src="img/11.gif" width="460" height="345" alt="nを1~15に増やしていったのときのアニメーション"/>↑$n$を1~15に増やしていったのときのアニメーション</small>
         <br/>
         <br/>
         <br/>
